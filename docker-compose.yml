@@ -1,0 +1,14 @@
+version: '3.9'
+services:
+  front:
+    build: .
+    working_dir: /app
+    volumes:
+      - ./my-project:/app
+      - node_modules:/app/node_modules
+    tty: true  # コンテナを正常終了するのを防ぐ
+    ports:
+      - '5173:5173'
+    command: yarn dev --host
+volumes:  # 名前付きボリュームの設定
+  node_modules:
