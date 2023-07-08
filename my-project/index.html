@@ -1,56 +1,20 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
   <head>
-    <title>My first Vue app</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" >
     <meta charset="UTF-8">
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vite App</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" >
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-    <script src="https://unpkg.com/vue@next"></script>
   </head>
-
-<body>
-  <h1 class="bg-secondary text-white display-4 px-3">Vue3</h1>
-  <div id="app" class="container">
-    <template v-if="flag">
-      <p>※データをテーブル表示する</p>
-      <table class="table">
-        <thead class="thead-dark">
-          <tr><th>Name</th><th>mail</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>Taro</td><td>taro@yamada</td></tr>
-          <tr><td>Hanako</td><td>hanako@flower</td></tr>
-          <tr><td>Sachiko</td><td>sachiko@happy</td></tr>
-      </tbody>
-      </table>
-    </template>
-    <template v-else>
-      <p>※データをリスト表示する</p>
-      <ul class="list-group">
-        <li class="list-group-item">Taroのアドレスは、taro@yamadaです。</li>
-        <li class="list-group-item">hanakoのアドレスは、hanako@flowerです。</li>
-        <li class="list-group-item">Sachikoのアドレスは、sachiko@happyです。</li>
-      </ul>
-    </template>
-  </div>
-  
-  <script>
-  const appdata = {
-    data() {
-      return {
-        flag : true
-      }
-    },
-    mounted() {
-      setInterval(()=>{
-        this.flag = !this.flag
-      }, 3000)
-    }
-  }
-
-  let app = Vue.createApp(appdata)
-  app.mount('#app')
-  </script>
-</body>
+  <body>
+    <h1 class="bg-secondary text-white h4 p-3">Vue3 Test</h1>
+    <div class="container">
+      <div id="app"></div>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

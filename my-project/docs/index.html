@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Test Vue app</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" >
+    <meta charset="UTF-8">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/vue@next"></script>
+  </head>
+
+  <body>
+    <h1 class="bg-secondary text-white display-4 px-3">Vue3</h1>
+    <div id="app" class="container">
+      <p>{{ message }}</p>
+      <hello/>
+    </div>
+    
+    <script>
+    const appdata = {
+      data() {
+        return {
+          message : '※ 表示テスト'
+        }
+      }
+    }
+  
+    let app = Vue.createApp(appdata)
+  
+    app.component('hello', {
+      data() {
+        return {
+          num:0,
+          message:'type a number.',
+        }
+      },
+      computed:{  // 算術プロパティ
+        calc:function(event) {
+          var total = 0
+          for (var i = 1; i <=this.num;i++){
+            total += i
+          }
+          return "total: " + total
+        }
+      },
+      template: `<div>
+        <p class="alert alert-info h4">{{calc}}</p>
+        <div>
+          <input class="form-control" type="number" 
+            v-model="num">
+        </div>
+      </div>`
+    })
+  
+    app.mount('#app')
+    </script>
+  </body>
+</html>

@@ -6,6 +6,7 @@ services:
     volumes:
       - ./my-project:/app
       - node_modules:/app/node_modules
+      - ./docs:/app/docs
     tty: true  # コンテナを正常終了するのを防ぐ
     ports:
       - '5173:5173'
