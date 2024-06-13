@@ -2,29 +2,51 @@
   <div className="alert alert-primary">
     <h1>{{title}}</h1>
     <p ref="msg">{{message}}</p>
-    <button class="btn btn-primary" 
-      v-on:click="DoAction">Click</button>
+    <hr>
+    <p class="h5">val: {{ val }}</p>
+    <div class="form-group text-left">
+      <label>* 2:</label>
+      <input type="number" v-model="a" class="form-control">
+    </div>
+    <div class="form-group text-left">
+      <label>^ 2:</label>
+      <input type="number" v-model="b" class="form-control">
+    </div>
   </div>
 </template>
 
 <script>
 export default {
   name: 'HelloWorld',
+  props: {
+    title: String,
+  },
   data() {
     return {
-      title: 'HelloWorld',
-      message:'This is sample message.',
+      message:'算出プロパティの利用',
+      val: 0,
     }
   },
-  mounted() {
-    this.counter = 0
+  computed: {
+    a: {
+      get() {
+        return this.val * 2
+      },
+      set(value) {
+        this.val = Math.floor(value / 2)
+      },
+    },
+    b: {
+      get() {
+        return this.val * this.val
+      },
+      set(value) {
+        this.val = Math.floor(Math.sqrt(value))
+      },
+    },
   },
-  methods: {
-    DoAction() {
-      this.counter++
-      this.$refs.msg.innerHTML += '<h6>counted: ' 
-        + this.counter + '</h6>'
-    }
-  }
+  created() {
+    this.val = 10
+  },
 }
 </script>
