@@ -24,19 +24,26 @@
       <p>CCC</p>
     </SlotTest>
   </div>
+  <br>
+  <div>
+    <Animation/>
+  </div>
+  <br>
 </template>
 
 <script>
 import Calc from './components/Calc.vue'
 import HelloWorld from './components/HelloWorld.vue'
 import SlotTest from './components/SlotTest.vue'
+import Animation from './components/Animation.vue'
 
 export default {
   name: 'app',
   components: {
     Calc,
     HelloWorld,
-    SlotTest
+    SlotTest,
+    Animation
 },
   data() {
     return {
