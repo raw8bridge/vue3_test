@@ -15,17 +15,28 @@
     <HelloWorld/>
   </div>
   <br>
+  <div>
+    <SlotTest>
+      <p>AAA</p>
+      <template v-slot:second>*** Second ***</template>
+      <p>BBB</p>
+      <template v-slot:first>*** First ***</template>
+      <p>CCC</p>
+    </SlotTest>
+  </div>
 </template>
 
 <script>
 import Calc from './components/Calc.vue'
 import HelloWorld from './components/HelloWorld.vue'
+import SlotTest from './components/SlotTest.vue'
 
 export default {
   name: 'app',
   components: {
     Calc,
-    HelloWorld
+    HelloWorld,
+    SlotTest
 },
   data() {
     return {
