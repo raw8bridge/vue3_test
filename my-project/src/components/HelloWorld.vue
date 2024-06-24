@@ -1,48 +1,48 @@
 <template>
   <div className="alert alert-primary">
-    <h2 class="card-title text-center">{{ title }}</h2>
-    <p>{{ message }}</p>
+    <h1 class="text-center">{{ data.title }} [{{ name }}]</h1>
+    <p class="text-center h5">{{ data.msg }}</p>
     <hr>
+    <p class="text-center">a + b = {{ sum }}</p>
     <div>
-      <input type="text" class="form-control"
-        v-on:keypress="type"
-        v-on:keydown.delete="clear"
-        v-on:keydown.space="space"
-        v-on:keydown.enter="enter"
-        v-on:keyup="form_clr">
+      <label for="a">a: </label>
+      <input type="number" v-model="data.num1"
+        name="a" min="0" class="form-control">
+      <label for="b">b: </label>
+      <input type="number" v-model="data.num2"
+        name="b" min="0" class="form-control">
     </div>
+    <button class="btn btn-primary m-3"
+      v-on:click="action">Click</button>
   </div>
 </template>
 
 <script>
+import { ref, reactive, computed } from 'vue'
+
 export default {
-  name: 'HelloWorld',
   props: {
+    name: String,
   },
-  data() {
-    return {
-      title: 'Event',
-      message: '',
+  setup(props, context) {
+    const data = reactive({
+      title: 'Hello World',
+      msg: 'This is ref-value!',
+      num1: 10,
+      num2: 20,
+    })
+    const sum = computed(() => data.num1 + data.num2)
+    // data.msg = context.attrs['msg'].toUpperCase()
+    const action = () => {
+      let total = 0
+      for(let i = 1; i <= data.num1; i++) {
+        total += i
+      }
+      data.msg = "Total a: " + total
     }
-  },
-  methods: {
-    type(event) {
-      if(event.key == 'Enter') { return }
-      this.message += event.key + ' '
-      event.target.value = ''
-    },
-    clear() {
-      this.message = ''
-    },
-    space() {
-      this.message += '_ '
-    },
-    enter(event) {
-      var res = this.message.split(' ').join('')
-      this.message = res.split('_').join(' ')
-      event.target.value = ''
-    },
-    form_clr(event) { event.target.value = '' },
-  },
+    return {
+      data, sum, action
+    }
+  }
 }
 </script>

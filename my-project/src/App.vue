@@ -1,5 +1,20 @@
 <template>
   <div>
+    <router-link :to="{ name: 'index', params: { name: 'hoge' } }"
+      class="btn btn-primary mx-2">
+      Go to Top
+    </router-link>
+    <router-link :to="{ name: 'event', params: { name: 'huga'} }"
+      class="btn btn-primary mx-2">
+      Go to Event
+    </router-link>
+    <hr>
+    <router-view></router-view>
+    <!-- <HelloWorld title="Composition API"
+      msg="This is Composition API sample"/> -->
+  </div>
+  <br>
+  <div>
     <Calc v-bind:title="message"
       v-on:result-event="appAction"/>
     <div class="mt-3 text-left">
@@ -11,9 +26,9 @@
     </div>
   </div>
   <br>
-  <div>
-    <HelloWorld/>
-  </div>
+  <!-- <div>
+    <Event/>
+  </div> -->
   <br>
   <div>
     <SlotTest>
@@ -32,19 +47,21 @@
 </template>
 
 <script>
-import Calc from './components/Calc.vue'
 import HelloWorld from './components/HelloWorld.vue'
+import Calc from './components/Calc.vue'
+import Event from './components/Event.vue'
 import SlotTest from './components/SlotTest.vue'
 import Animation from './components/Animation.vue'
 
 export default {
   name: 'app',
   components: {
-    Calc,
     HelloWorld,
+    Calc,
+    Event,
     SlotTest,
     Animation
-},
+  },
   data() {
     return {
       message:'CALC',
