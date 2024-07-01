@@ -1,17 +1,6 @@
 <template>
   <div>
-    <router-link :to="{ name: 'index', params: { name: 'hoge' } }"
-      class="btn btn-primary mx-2">
-      Go to Top
-    </router-link>
-    <router-link :to="{ name: 'event', params: { name: 'huga'} }"
-      class="btn btn-primary mx-2">
-      Go to Event
-    </router-link>
-    <hr>
-    <router-view></router-view>
-    <!-- <HelloWorld title="Composition API"
-      msg="This is Composition API sample"/> -->
+    <HelloWorld name="user"/>
   </div>
   <br>
   <div>

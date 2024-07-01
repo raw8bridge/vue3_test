@@ -1,7 +1,15 @@
 <template>
   <div className="alert alert-primary">
     <h1 class="text-center">{{ data.title }} [{{ name }}]</h1>
-    <p class="text-center h5">{{ data.msg }}</p>
+    <p class="text-center h5">{{ $store.state.message }}</p>
+    <hr>
+    <div class="btn btn-secondary"
+      @click="$store.commit('count')"
+      @click.ctrl="$store.commit('reset')">
+      <a class="h5">
+        clicked: {{ $store.state.counter }}
+      </a>
+    </div>
     <hr>
     <p class="text-center">a + b = {{ sum }}</p>
     <div>
